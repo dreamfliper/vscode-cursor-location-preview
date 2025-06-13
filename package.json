@@ -3,6 +3,8 @@
   "displayName": "cursor-location-preview",
   "description": "Quick Preview Cursor History",
   "author": "dreamfliper@gmail.com",
+  "icon": "images/main-icon.png",
+  "publisher": "dreamfliper",
   "license": "MIT",
   "repository": {
     "type": "git",
