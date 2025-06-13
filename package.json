@@ -1,6 +1,6 @@
 {
   "name": "cursor-location-preview",
-  "displayName": "cursor-location-preview",
+  "displayName": "Cursor Location Preview",
   "description": "Quick Preview Cursor History",
   "author": "dreamfliper@gmail.com",
   "icon": "images/main-icon.png",
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/dreamfliper/vscode-cursor-location-preview"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.88.0"
   },
