@@ -10,6 +10,12 @@ Record cursor positions and provide a command to quickly preview the cursor hist
 
 Users appreciate release notes as you update your extension.
 
+### 0.0.5
+
+Improves cursor history accuracy
+
+Updates cursor history to be more accurate by adjusting the sensitivity to cursor movements, reducing redundant entries for small movements. Also, ensures the first cursor position is always recorded.
+
 ### 0.0.4
 
 Improves cursor position tracking

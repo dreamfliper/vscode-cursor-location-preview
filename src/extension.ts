@@ -13,8 +13,13 @@ const selectionListener = vscode.window.onDidChangeTextEditorSelection(event => 
   | OR cursor position is too close to previous position
   */
   if (event.selections.length === 0) return
-  if (cursorHistory.at(-1)?.documentUri.path === event.textEditor.document.uri.path) return
-  if (Math.abs(cursorHistory.at(-1)?.position.compareTo(event.selections[0].active) ?? 0) < 100) return
+  if (cursorHistory.length === 0)
+    cursorHistory.push({ documentUri: event.textEditor.document.uri, position: event.selections[0].active })
+  if (
+    cursorHistory.at(-1)?.documentUri.path === event.textEditor.document.uri.path &&
+    Math.abs((cursorHistory.at(-1)?.position.line ?? 0) - event.selections[0].start.line) < 30
+  )
+    return
   cursorHistory.push({ documentUri: event.textEditor.document.uri, position: event.selections[0].active })
 })
 
