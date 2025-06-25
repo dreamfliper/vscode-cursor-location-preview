@@ -7,10 +7,15 @@ const cursorHistory: { documentUri: vscode.Uri; position: vscode.Position }[] = 
 
 // Listen to cursor (selection) changes in any active text editor
 const selectionListener = vscode.window.onDidChangeTextEditorSelection(event => {
-  // Only track the primary selection's active position
-  if (event.selections.length > 0) {
-    cursorHistory.push({ documentUri: event.textEditor.document.uri, position: event.selections[0].active })
-  }
+  /* Skip if
+  | no selection exists
+  | cursor is in the same file
+  | OR cursor position is too close to previous position
+  */
+  if (event.selections.length === 0) return
+  if (cursorHistory.at(-1)?.documentUri.path === event.textEditor.document.uri.path) return
+  if (Math.abs(cursorHistory.at(-1)?.position.compareTo(event.selections[0].active) ?? 0) < 100) return
+  cursorHistory.push({ documentUri: event.textEditor.document.uri, position: event.selections[0].active })
 })
 
 export function activate(context: vscode.ExtensionContext) {
