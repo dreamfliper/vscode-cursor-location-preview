@@ -21,6 +21,7 @@ const selectionListener = vscode.window.onDidChangeTextEditorSelection(event => 
   )
     return
   cursorHistory.push({ documentUri: event.textEditor.document.uri, position: event.selections[0].active })
+  if (cursorHistory.length > 25) cursorHistory.shift()
 })
 
 export function activate(context: vscode.ExtensionContext) {
